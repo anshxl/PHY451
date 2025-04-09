@@ -1,7 +1,6 @@
 import sys
 import serial
 
-
 class PrologixGPIB(object):
 	def __init__(self, devpath):
 		self.gpib = serial.Serial(devpath, baudrate=115200)
@@ -34,7 +33,17 @@ class PrologixGPIB(object):
 
 	def addr(self, addr):
 		self('++addr %d' % addr)
+		self.gpib.flushInput()
 
-gpib = PrologixGPIB(sys.argv[1])
-gpib.addr(10)
-print(gpib('*idn?', True))
+	def scan_bus(self):
+		for i in range(0, 31):
+			self.addr(i)
+			try:
+				print(i, ':', gpib('*idn?', True))
+			except:
+				pass
+				
+
+if __name__ == '__main__':
+	gpib = PrologixGPIB(sys.argv[1])
+	gpib.scan_bus()
