@@ -1,5 +1,5 @@
-Current (mA) - Plot 0	Voltage (mV) - Plot 0
-0	-3.15E-05
+Current (mA) - Plot 0   Voltage (mV) - Plot 0
+0   -3.15E-05
 0	-3.48E-05
 -1	0.555812
 -2	1.04546
